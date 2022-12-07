@@ -28,7 +28,7 @@ mongoose
   });
 
 app.get("/", function (req, res) {
-  res.send("{Secret : Ou oh , Hellow }");
+  res.send("{Secret : Ou oh , you found Me}");
 });
 
 const server = app.listen(process.env.PORT, () => {
@@ -37,7 +37,7 @@ const server = app.listen(process.env.PORT, () => {
 
 const io = socket(server, {
   cors: {
-    origin: process.env.ORIGIN,
+    origin: "*",
     credentials: true,
   },
 });
