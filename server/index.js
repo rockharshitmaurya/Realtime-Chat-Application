@@ -1,5 +1,5 @@
 const express = require("express");
-// const cors = require("cors");
+const cors = require("cors");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/userRoutes");
 const messageRoute = require("./routes/messagesRoute");
@@ -9,7 +9,7 @@ const socket = require("socket.io");
 
 require("dotenv").config();
 
-// app.use(cors());
+app.use(cors());
 app.use(express.json());
 
 app.use("/api/auth", userRoutes);
@@ -36,9 +36,9 @@ const server = app.listen(process.env.PORT, () => {
 });
 
 const io = socket(server, {
-//   cors: {
-//     origin: "*",
-//   },
+  cors: {
+    origin: "*",
+  },
 });
 
 global.onlineUsers = new Map();
